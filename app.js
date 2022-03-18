@@ -1,11 +1,13 @@
 const express = require("express");
 
-const quoteRoutes = require("./routes/quotes.routes");
 const db = require("./data/database");
+const todosRoutes = require("./routes/todos.routes");
 
 const app = express();
 
-app.use("/quote", quoteRoutes);
+app.use(express.json());
+
+app.use("/todos", todosRoutes);
 
 app.use(function (error, req, res, next) {
   res.status(500).json({
